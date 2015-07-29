@@ -20,9 +20,14 @@
         //close the connection
          $DBH=null;
         // If result matched $myusername and $mypassword, table row must be 1 row
-        if($result){
+        if($result && $myusername!='test@test.com')
+            {
            $_SESSION['user']=$myusername;
-            header("location:home.php");
+            header("location:../view/home.php");
+        }
+        else if($result && $myusername=='test@test.com')
+        {
+            header("location:../view/admin.php");
         }
         else
          {

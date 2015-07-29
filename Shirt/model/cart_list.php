@@ -9,8 +9,8 @@
 
         
         $DBH = new PDO("mysql:host=$host;dbname=$db_name",$username,$password);
-          $user=$_SESSION['user']; 
-        $STH = $DBH->query("SELECT a.name,a.cost,a.id  FROM $tbl_name1 as a,$tbl_name as b where a.id=b.pid and b.usid='$user' ");
+        $user=$_SESSION['user']; 
+        $STH = $DBH->query("SELECT a.name,a.cost,a.id,b.cartid  FROM $tbl_name1 as a,$tbl_name as b where a.id=b.pid and b.usid='$user' and b.status=1 ");
         $STH->setFetchMode(PDO::FETCH_ASSOC);
         $cart_list = $STH->fetchAll();
 
